@@ -136,6 +136,7 @@ button{
   margin: 0 auto;
   margin-top: 15px;
   justify-content: center;
+  margin-bottom: 10px;
 }
 
 .tittle-favorite{
@@ -208,7 +209,7 @@ button:hover{
 }
 
 #upload-label span{
-  font-size: 1.8rem;
+  font-size: 1.2rem;
   font-weight: 700;
 }
 
@@ -219,7 +220,7 @@ button:hover{
 
   #upload-label i{
   margin-top: 10px;
-font-size: 3rem;
+font-size: 2.5rem;
 text-align: center;
 }
 #uploadingDog{
@@ -227,4 +228,9 @@ text-align: center;
 }
 .importanBtn{
   border-radius: 20px;
+}
+hr{
+  width: 85%;
+  margin: 0 auto;
+  opacity: 10%;
 }

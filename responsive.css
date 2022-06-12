@@ -24,3 +24,15 @@ img{
 .importanBtn{
   width: 30%;
 }
+#upload-label span{
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+#upload-label:hover{
+  padding: 35px 20%;
+  background-color: #032d4d3d;
+}
+#upload-label i{
+  font-size: 3rem;
+}
