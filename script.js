@@ -1,8 +1,8 @@
 //! La API se verifica con el api_key de ultimo y se mete con un &.
-const API_URL_RANDOM = "https://api.thecatapi.com/v1/images/search?limit=5";
-const API_URL_FAVORITE = "https://api.thecatapi.com/v1/favourites";
+const API_URL_RANDOM = "https://api.thedogapi.com/v1/images/search?limit=5";
+const API_URL_FAVORITE = "https://api.thedogapi.com/v1/favourites";
 const API_URL_FAVORITE_DELETE = (id) =>
-  `https://api.thecatapi.com/v1/favourites/${id}`;
+  `https://api.thedogapi.com/v1/favourites/${id}`;
 
 const errorSpan = document.getElementById("error");
 const notHaveFavoriteError = document.getElementById("favoriteError");
@@ -56,7 +56,7 @@ async function UpdateFavoriteCat() {
   const res = await fetch(API_URL_FAVORITE, {
     method: "GET",
     headers: {
-      "X-API-KEY": "adadc38e-9bb2-4d49-b690-b4d2f03ed5b8",
+      "X-API-KEY": "c540b85d-ef2f-4b5b-abed-0e504381f5e6",
     },
   });
   const obj = await res.json();
@@ -89,7 +89,7 @@ async function makeFavorite(id) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "X-API-KEY": "adadc38e-9bb2-4d49-b690-b4d2f03ed5b8",
+      "X-API-KEY": "c540b85d-ef2f-4b5b-abed-0e504381f5e6",
     },
     body: JSON.stringify({
       image_id: id,
@@ -105,7 +105,7 @@ async function deleteFavorite(id) {
   const res = await fetch(API_URL_FAVORITE_DELETE(id), {
     method: "DELETE",
     headers: {
-      "X-API-KEY": "adadc38e-9bb2-4d49-b690-b4d2f03ed5b8",
+      "X-API-KEY": "c540b85d-ef2f-4b5b-abed-0e504381f5e6",
     },
   });
   const obj = await res.json();
