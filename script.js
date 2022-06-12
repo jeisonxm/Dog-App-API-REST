@@ -1,5 +1,6 @@
 //! La API se verifica con el api_key de ultimo y se mete con un &.
 const API_URL_RANDOM = "https://api.thedogapi.com/v1/images/search?limit=5";
+const API_URL_UPLOAD = "https://api.thedogapi.com/v1/images/upload";
 const API_URL_FAVORITE = "https://api.thedogapi.com/v1/favourites";
 const API_URL_FAVORITE_DELETE = (id) =>
   `https://api.thedogapi.com/v1/favourites/${id}`;
@@ -118,6 +119,30 @@ async function deleteFavorite(id) {
     UpdateFavoriteCat();
   }
   console.log("prueba", res);
+}
+
+async function uploadDogImage() {
+  const form = document.getElementById("uploadingForm");
+  // Form data nos ayuda a poner todos los datos que obtenemos de un form.
+  const formData = new FormData(form);
+
+  console.log(formData.get("file"));
+
+  const res = await fetch(API_URL_UPLOAD, {
+    method: "POST",
+    headers: {
+      "X-API-KEY": "c540b85d-ef2f-4b5b-abed-0e504381f5e6",
+    },
+    body: formData,
+  });
+  const obj = await res.json();
+  if (res.status != 200) {
+    errorSpan.innerHTML = `You have an error ${obj.message}`;
+  } else {
+    console.log("subimos la imagen");
+  }
+  console.log(obj);
+  console.log(obj.url);
 }
 
 loadRandomCat();

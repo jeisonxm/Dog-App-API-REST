@@ -80,6 +80,9 @@ footer i:hover{
   justify-items: center;
   overflow: unset;
 }
+i{
+  margin: 0 5px 0 5px; 
+}
 a{
   text-decoration: none;
   color: white;
@@ -180,4 +183,36 @@ button:hover{
 }
 #favoriteMichis{
   margin-bottom: 20px;
+}
+
+#file{
+  position: absolute;
+  visibility: hidden;
+}
+#uploadingForm{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#upload-label{
+  color: white;
+  background-color: var(--footer-color);
+  padding: 20px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition-duration: 400ms;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
+}
+#upload-label:hover{
+  padding: 30px 50px;
+  background-color: #032d4d3d;
+}
+
+  #upload-label i{
+  margin-top: 10px;
+font-size: 3rem;
+text-align: center;
 }
