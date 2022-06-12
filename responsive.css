@@ -21,3 +21,6 @@ img{
 .images-grid{
   grid-template-columns: repeat(auto-fit,minmax(150px,250px));
 }
+.importanBtn{
+  width: 30%;
+}

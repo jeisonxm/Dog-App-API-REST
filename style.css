@@ -196,18 +196,24 @@ button:hover{
   align-items: center;
 }
 #upload-label{
+  border-radius: 15px 50px;
   color: white;
   background-color: var(--footer-color);
-  padding: 20px;
+  padding: 30px 10%;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   transition-duration: 400ms;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-
 }
+
+#upload-label span{
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
 #upload-label:hover{
-  padding: 30px 50px;
+  padding: 35px 20%;
   background-color: #032d4d3d;
 }
 
@@ -215,4 +221,10 @@ button:hover{
   margin-top: 10px;
 font-size: 3rem;
 text-align: center;
+}
+#uploadingDog{
+  margin-top: 20px;
+}
+.importanBtn{
+  border-radius: 20px;
 }

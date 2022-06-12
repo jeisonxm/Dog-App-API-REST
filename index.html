@@ -59,20 +59,19 @@
             </button>
           </article>
         </section>
-        <button onclick="loadRandomCat()" id="reload-button">
+        <button onclick="loadRandomCat()" id="reload-button" class="importanBtn">
           Reload <i class="fa-solid fa-arrows-rotate"></i>
         </button>
 
 
         <section id="uploadingDog">
-          <h2><i class="fa-solid fa-bone"></i>  Upload your dog images  <i class="fa-solid fa-bone"></i></h2>
 
           <form id="uploadingForm">
             <label for="file" id="upload-label">
               <span>Upload your dog picture! </span><i class="fa-solid fa-cloud-arrow-up"></i>
               <input type="file" id="file" name="file" />
             </label>
-            <button type="button" onclick="uploadDogImage()">Upload Dog</button>
+            <button type="button" onclick="uploadDogImage()" class="importanBtn"> Upload your dog images  <i class="fa-solid fa-bone"></i></button>
           </form>
         </section>
 
@@ -83,7 +82,7 @@
               <i class="fa-solid fa-shield-dog"></i> Favorite Dogs
               <i class="fa-solid fa-shield-dog"></i>
             </h2>
-            <button id="outFavorite" onclick="UpdateFavoriteCat()">
+            <button id="outFavorite" onclick="UpdateFavoriteCat()" class="importanBtn">
               Show the favorite </i>
             </button>
           </div>
