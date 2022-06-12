@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/10b9adabac.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>CAT APP</title>
+  </head>
+  <body>
+    <div id="body-grid">
+      <header>
+        <h1>
+          <i class="fa-solid fa-paw"></i> Cats Image App
+          <i class="fa-solid fa-paw"></i>
+        </h1>
+        <span id="error"></span>
+      </header>
+      <main>
+        <h2>
+          <i class="fa-solid fa-cat"></i> Random Cats
+          <i class="fa-solid fa-cat"></i>
+        </h2>
+        <section id="randomMichis" class="images-grid">
+          <article class="img-container">
+            <img height="250px" width="250px" src="" alt="" id="img1" />
+            <button id="button1" class="favoriteButton">
+              <i class="fa-solid fa-heart"></i>
+            </button>
+          </article>
+          <article class="img-container">
+            <img height="250px" width="250px" src="" alt="" id="img2" />
+            <button id="button2" class="favoriteButton">
+              <i class="fa-solid fa-heart"></i>
+            </button>
+          </article>
+          <article class="img-container">
+            <img height="250px" width="250px" src="" alt="" id="img3" />
+            <button id="button3" class="favoriteButton">
+              <i class="fa-solid fa-heart"></i>
+            </button>
+          </article>
+          <article class="img-container">
+            <img height="250px" width="250px" src="" alt="" id="img4" />
+            <button id="button4" class="favoriteButton">
+              <i class="fa-solid fa-heart"></i>
+            </button>
+          </article>
+          <article class="img-container">
+            <img height="250px" width="250px" src="" alt="" id="img5" />
+            <button id="button5" class="favoriteButton">
+              <i class="fa-solid fa-heart"></i>
+            </button>
+          </article>
+          <article class="img-container">
+            <img height="250px" width="250px" src="" alt="" id="img6" />
+            <button id="button6" class="favoriteButton">
+              <i class="fa-solid fa-heart"></i>
+            </button>
+          </article>
+          <button onclick="loadRandomCat()">
+            Reload <i class="fa-solid fa-arrows-rotate"></i>
+          </button>
+        </section>
+        <section class="favorite-container">
+          <div class="tittle-favorite">
+            <h2>
+              <i class="fa-solid fa-shield-cat"></i> Favorite cats
+              <i class="fa-solid fa-shield-cat"></i>
+            </h2>
+            <button id="outFavorite" onclick="UpdateFavoriteCat()">
+              Show the favorite
+            </button>
+          </div>
+
+          <section id="favoriteMichis" class="images-grid"></section>
+        </section>
+      </main>
+      <footer>
+        <p>Made by Jeison Sang Wu Mitre</p>
+        <ul class="footer-contact">
+          <li>
+            <a href="https://twitter.com/JeisonWu"
+              ><i class="fa-brands fa-twitter"></i
+            ></a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/jeisonwu/"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+          </li>
+          <li>
+            <a href="mailto:jeisonwumitre@gmail.com "
+              ><i class="fa-solid fa-envelope"></i
+            ></a>
+          </li>
+          <li>
+            <a href="https://github.com/jeisonxm"
+              ><i class="fa-brands fa-github"></i
+            ></a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/jeisonwu/"
+              ><i class="fa-brands fa-linkedin"></i
+            ></a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
