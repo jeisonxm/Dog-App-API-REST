@@ -10,6 +10,11 @@
       crossorigin="anonymous"
     ></script>
     <title>CAT APP</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Mukta:wght@400;600&family=Roboto:ital,wght@0,500;1,300;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./responsive.css" media="(min-width: 750px)" />
   </head>
   <body>
     <div id="body-grid">
@@ -50,22 +55,16 @@
               <i class="fa-solid fa-heart"></i>
             </button>
           </article>
-          <article class="img-container">
+          <article class="img-container" id="img-container5">
             <img height="250px" width="250px" src="" alt="" id="img5" />
             <button id="button5" class="favoriteButton">
               <i class="fa-solid fa-heart"></i>
             </button>
           </article>
-          <article class="img-container">
-            <img height="250px" width="250px" src="" alt="" id="img6" />
-            <button id="button6" class="favoriteButton">
-              <i class="fa-solid fa-heart"></i>
-            </button>
-          </article>
-          <button onclick="loadRandomCat()">
-            Reload <i class="fa-solid fa-arrows-rotate"></i>
-          </button>
         </section>
+        <button onclick="loadRandomCat()" id="reload-button">
+          Reload <i class="fa-solid fa-arrows-rotate"></i>
+        </button>
         <section class="favorite-container">
           <div class="tittle-favorite">
             <h2>

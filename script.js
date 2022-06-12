@@ -1,5 +1,5 @@
 //! La API se verifica con el api_key de ultimo y se mete con un &.
-const API_URL_RANDOM = "https://api.thecatapi.com/v1/images/search?limit=6";
+const API_URL_RANDOM = "https://api.thecatapi.com/v1/images/search?limit=5";
 const API_URL_FAVORITE = "https://api.thecatapi.com/v1/favourites";
 const API_URL_FAVORITE_DELETE = (id) =>
   `https://api.thecatapi.com/v1/favourites/${id}`;
