@@ -7,9 +7,9 @@ const API_URL_FAVORITE_DELETE = (id) =>
 
 const errorSpan = document.getElementById("error");
 const notHaveFavoriteError = document.getElementById("favoriteError");
-const section = document.getElementById("favoriteMichis");
+const section = document.getElementById("favoriteDog");
 
-async function loadRandomCat() {
+async function loadRandomDog() {
   const res = await fetch(API_URL_RANDOM);
   const obj = await res.json();
 
@@ -38,7 +38,7 @@ function domDynamic(object) {
       const article = document.createElement("article");
       const img = document.createElement("img");
       const btn = document.createElement("button");
-      const btnText = document.createTextNode("Delete Cat");
+      const btnText = document.createTextNode("Delete Dog");
       article.id = element.id;
       article.className = "FavoritePhotos img-container";
       btn.className = "deleteFavorite";
@@ -53,7 +53,7 @@ function domDynamic(object) {
   });
 }
 
-async function UpdateFavoriteCat() {
+async function UpdateFavoriteDog() {
   const res = await fetch(API_URL_FAVORITE, {
     method: "GET",
     headers: {
@@ -89,14 +89,14 @@ async function makeFavorite(id) {
   const res = await fetch(API_URL_FAVORITE, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "appliDogion/json",
       "X-API-KEY": "c540b85d-ef2f-4b5b-abed-0e504381f5e6",
     },
     body: JSON.stringify({
       image_id: id,
     }),
   });
-  UpdateFavoriteCat();
+  UpdateFavoriteDog();
   const obj = await res.json();
   console.log(obj.message);
   console.log("prueba", res);
@@ -115,8 +115,8 @@ async function deleteFavorite(id) {
     console.log(obj.message);
     errorSpan.innerHTML = `You have an error ${obj.message}`;
   } else {
-    console.log("The cat was delete");
-    UpdateFavoriteCat();
+    console.log("The Dog was delete");
+    UpdateFavoriteDog();
   }
   console.log("prueba", res);
 }
@@ -146,6 +146,6 @@ async function uploadDogImage() {
 }
 for (let i = 0; i < 10; i++) {
   console.time("fetch");
-  loadRandomCat();
+  loadRandomDog();
   console.timeEnd("fetch");
 }

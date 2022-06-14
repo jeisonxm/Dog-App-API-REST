@@ -5,17 +5,11 @@ const api = axios.create({
 api.defaults.headers.common["X-API-KEY"] =
   "c540b85d-ef2f-4b5b-abed-0e504381f5e6";
 
-//! La API se verifica con el api_key de ultimo y se mete con un &.
-const API_URL_UPLOAD = "https://api.thedogapi.com/v1/images/upload";
-const API_URL_FAVORITE = "https://api.thedogapi.com/v1/favourites";
-const API_URL_FAVORITE_DELETE = (id) =>
-  `https://api.thedogapi.com/v1/favourites/${id}`;
-
 const errorSpan = document.getElementById("error");
 const notHaveFavoriteError = document.getElementById("favoriteError");
-const section = document.getElementById("favoriteMichis");
+const section = document.getElementById("favoriteDog");
 
-async function loadRandomCat() {
+async function loadRandomDog() {
   const { data, status } = await api.get("images/search?limit=5");
   console.time(data);
   if (status != 200) {
@@ -58,10 +52,8 @@ function domDynamic(object) {
   });
 }
 
-async function UpdateFavoriteCat() {
+async function UpdateFavoriteDog() {
   const { data, status } = await api.get("favourites");
-  console.log(data);
-  console.log(status);
   const photosArray = Array.from(document.querySelectorAll(".FavoritePhotos"));
   if (status != 200) {
     errorSpan.innerHTML = "hubo un error: " + status;
@@ -88,8 +80,7 @@ async function makeFavorite(id) {
     image_id: id,
   });
   console.log(data);
-  console.log(status);
-  UpdateFavoriteCat();
+  UpdateFavoriteDog();
 }
 
 async function deleteFavorite(id) {
@@ -99,7 +90,7 @@ async function deleteFavorite(id) {
     errorSpan.innerHTML = `You have an error ${data.message}`;
   } else {
     console.log("The dog was delete");
-    UpdateFavoriteCat();
+    UpdateFavoriteDog();
   }
 }
 
@@ -117,4 +108,4 @@ async function uploadDogImage() {
   console.log(status);
 }
 
-loadRandomCat();
+loadRandomDog();
