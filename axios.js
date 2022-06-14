@@ -1,5 +1,11 @@
+const api = axios.create({
+  baseURL: "https://api.thedogapi.com/v1/",
+});
+
+api.defaults.headers.common["X-API-KEY"] =
+  "c540b85d-ef2f-4b5b-abed-0e504381f5e6";
+
 //! La API se verifica con el api_key de ultimo y se mete con un &.
-const API_URL_RANDOM = "https://api.thedogapi.com/v1/images/search?limit=5";
 const API_URL_UPLOAD = "https://api.thedogapi.com/v1/images/upload";
 const API_URL_FAVORITE = "https://api.thedogapi.com/v1/favourites";
 const API_URL_FAVORITE_DELETE = (id) =>
@@ -10,10 +16,9 @@ const notHaveFavoriteError = document.getElementById("favoriteError");
 const section = document.getElementById("favoriteMichis");
 
 async function loadRandomCat() {
-  const res = await fetch(API_URL_RANDOM);
-  const obj = await res.json();
-
-  if (res.status != 200) {
+  const { data, status } = await api.get("images/search?limit=5");
+  console.time(data);
+  if (status != 200) {
     errorSpan.innerHTML = "hubo un error: <br>" + res.status;
   } else {
     const buttonsNode = document.querySelectorAll(".favoriteButton");
@@ -21,11 +26,11 @@ async function loadRandomCat() {
 
     for (let i = 0; i < buttons.length; i++) {
       const element = buttons[i];
-      element.onclick = () => makeFavorite(obj[i].id);
+      element.onclick = () => makeFavorite(data[i].id);
     }
 
-    for (let i = 0; i < obj.length; i++) {
-      const element = obj[i];
+    for (let i = 0; i < data.length; i++) {
+      const element = data[i];
       let imgSelect = document.getElementById(`img${i + 1}`);
       imgSelect.src = element.url;
     }
@@ -38,7 +43,7 @@ function domDynamic(object) {
       const article = document.createElement("article");
       const img = document.createElement("img");
       const btn = document.createElement("button");
-      const btnText = document.createTextNode("Delete Cat");
+      const btnText = document.createTextNode("Delete Dog :(");
       article.id = element.id;
       article.className = "FavoritePhotos img-container";
       btn.className = "deleteFavorite";
@@ -54,95 +59,62 @@ function domDynamic(object) {
 }
 
 async function UpdateFavoriteCat() {
-  const res = await fetch(API_URL_FAVORITE, {
-    method: "GET",
-    headers: {
-      "X-API-KEY": "c540b85d-ef2f-4b5b-abed-0e504381f5e6",
-    },
-  });
-  const obj = await res.json();
+  const { data, status } = await api.get("favourites");
+  console.log(data);
+  console.log(status);
   const photosArray = Array.from(document.querySelectorAll(".FavoritePhotos"));
-  console.log(obj);
-  if (res.status != 200) {
-    errorSpan.innerHTML = "hubo un error: " + res.status;
+  if (status != 200) {
+    errorSpan.innerHTML = "hubo un error: " + status;
   } else if (photosArray.length > 0) {
-    if (obj.length === photosArray.length) {
-      domDynamic(obj);
+    if (data.length === photosArray.length) {
+      domDynamic(data);
     } else {
       section.innerHTML = "";
-      domDynamic(obj);
+      domDynamic(data);
     }
   } else {
-    domDynamic(obj);
+    domDynamic(data);
   }
-
-  console.log("array de fotos", photosArray);
 
   const buttonsNode = document.querySelectorAll(".deleteFavorite");
   const buttons = Array.from(buttonsNode);
   buttons.map((element) => {
-    element.onclick = () => deleteFavorite(obj[buttons.indexOf(element)].id);
+    element.onclick = () => deleteFavorite(data[buttons.indexOf(element)].id);
   });
 }
 
 async function makeFavorite(id) {
-  const res = await fetch(API_URL_FAVORITE, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-API-KEY": "c540b85d-ef2f-4b5b-abed-0e504381f5e6",
-    },
-    body: JSON.stringify({
-      image_id: id,
-    }),
+  const { data, status } = await api.post("favourites", {
+    image_id: id,
   });
+  console.log(data);
+  console.log(status);
   UpdateFavoriteCat();
-  const obj = await res.json();
-  console.log(obj.message);
-  console.log("prueba", res);
 }
 
 async function deleteFavorite(id) {
-  const res = await fetch(API_URL_FAVORITE_DELETE(id), {
-    method: "DELETE",
-    headers: {
-      "X-API-KEY": "c540b85d-ef2f-4b5b-abed-0e504381f5e6",
-    },
-  });
-  const obj = await res.json();
-
-  if (res.status != 200) {
-    console.log(obj.message);
-    errorSpan.innerHTML = `You have an error ${obj.message}`;
+  const { data, status } = await api.delete(`favourites/${id}`);
+  if (status != 200) {
+    console.log(data.message);
+    errorSpan.innerHTML = `You have an error ${data.message}`;
   } else {
-    console.log("The cat was delete");
+    console.log("The dog was delete");
     UpdateFavoriteCat();
   }
-  console.log("prueba", res);
 }
 
 async function uploadDogImage() {
   const form = document.getElementById("uploadingForm");
-  // Form data nos ayuda a poner todos los datos que obtenemos de un form.
   const formData = new FormData(form);
-
-  console.log(formData.get("file"));
-
-  const res = await fetch(API_URL_UPLOAD, {
-    method: "POST",
-    headers: {
-      "X-API-KEY": "c540b85d-ef2f-4b5b-abed-0e504381f5e6",
-    },
-    body: formData,
-  });
-  const obj = await res.json();
-  if (res.status != 200) {
-    errorSpan.innerHTML = `You have an error ${obj.message}`;
+  console.log(formData);
+  const { data, status } = api.post("images/upload", { body: formData });
+  if (status != 200) {
+    errorSpan.innerHTML = `You have an error ${data}`;
   } else {
     console.log("subimos la imagen");
   }
-  console.log(obj);
-  console.log(obj.url);
+  console.log(data);
+  console.log(status);
 }
 
 loadRandomCat();
